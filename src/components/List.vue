@@ -12,12 +12,21 @@
 </template>
 
 <script>
+import axios from 'axios';
+
     export default {
         data() {
             return {
                 items: [],
             };
         },
+        
+        mounted() {
+            axios.get('https://api.example.com/items').then((response) => {
+                this.items = response.data;
+            });
+        },
+
         methods: {
             editItem(item) {
                 //implement edit functionality
